@@ -1,0 +1,41 @@
+\documentclass[12pt,oneside,a4paper]{book}
+\pagestyle{plain}
+\usepackage{natbib}
+\bibliographystyle{apj}
+\usepackage{hyperref}
+\frenchspacing
+\usepackage[a4paper,width=170mm,top=25mm,bottom=25mm]{geometry}
+
+%journal shorts
+\newcommand\araa{ARA\&A}%
+\newcommand\aaps{A\&AS}%
+
+\begin{document}
+
+%ezgal
+EZgal\footnote{\url{http://www.baryons.org/ezgal/}} is a general package for dealing with SSPs \citep{Mancone2012}. It is a flexible Python package that allows the user to load and create arbitrary SFHs libraries from any SSP model set. It correctly handles normalization of the stellar mass when creating the SFH. It also allows the usage of dust models, and comes with a repository of SSP libraries.
+
+%LRGs
+LRGs have $70\%$-$90\%$ of their stellar mass formed at $z > 1$ \citep{Tojeiro2011}.
+
+LRGs and brightest cluster galaxies can be easily separated by their photometric colors \citep{Tojeiro2010}. They have a high proportion of their mass as part of there matter distribution, so they are go tracers for the $H(z)$ parameter. LRGs are assumed to be formed from a single population of objects and have been passively evolving. There are more red colored galaxies in the universe than other type of galaxies, so understanding them is key to understanding galaxy evolution. LRGs are usually studied in 3 different ways: looking how galaxies evolve as a function of redshift, the total co-moving number density of the objects, and the luminosity function. %look a wake et al 2006
+Not all LRGs are passively evolving. Their is evidence that the merger rate is dependent on luminosity. The fainter the LRGs the more recent the mergers were.
+
+%SSP models
+Ages recovery from SSPs have a systematic bias to be older than the age of the universe \citep{Tojeiro2009}. Late evolution of stars in their giant phase is very difficult to model and was not always included in SSP libraries. This is important because giant stars contributes a lot of luminosity to galaxies. The uses of empirical stellar spectra limits the SSP models by the uncertainties in the measurement of the stars and because we can only resolve stars that are near by that are deficient of: $O, Ne, Mg, Si, S ,Ca$, and $Ti$ or $\alpha$-elements. $\alpha$-elements do no see to have a degeneracy with the normal $[Fe/H]$ metals. The absorption features found in spectra, are indicators of chemical abundances of the stellar populations in the object. Emission features are evidence of recent star formation because the gas is often ionized near young stars.
+
+\citep{Zhu2010} many elliptical galaxies seem to have both a young population of stars as well as an older one, which is called frosting. Found a bi-modal age distribution when fitting elliptical galaxies using BC03.
+
+\citep{Vazdekis2010} When looking at unresolved stellar populations in galaxies SSPs are the best way to recover information. 
+%IMF
+
+%Dust models
+
+%Bayesian methods
+
+%spectral fitting codes
+Any parameterization of the SFH, is biases by being an oversimplification of what happens in galaxies. The quality of data imposes limits of the number of parameters that can be used.
+
+One of the most essential assumption for using spectral fitting codes, is that the spectral libraries are a good fit to the galaxies they are fitting.
+\bibliography{intro_bib}
+\end{document}
