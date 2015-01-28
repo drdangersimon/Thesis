@@ -1,12 +1,23 @@
-\documentclass[a4paper,10pt]{book}
-\usepackage[utf8x]{inputenc}
+\documentclass[12pt,oneside,a4paper]{book}
+\pagestyle{plain}
+\usepackage{natbib}
+\bibliographystyle{apj}
+\usepackage{hyperref}
+\frenchspacing
+\usepackage[a4paper,width=170mm,top=25mm,bottom=25mm]{geometry}
+
+%journal shorts
+\newcommand\araa{ARA\&A}%
+\newcommand\aaps{A\&AS}%
 
 \begin{document}
 
-\section{Methods}
-To recover the SFR, age of stellar population, dust content, line of sight velocity distribution and metallicity from a galaxy, I used Monte Carlo optimization to efficiently do the necessary integrals for recovery of the posterior. I tried different Monte Carlo algorithms to sample the posterior. To calculate the posterior requires calculating integrals of the likelihood and priors. The posterior may not have an analytical solution This chapter will cover all the Monte Carlo methods used in this thesis to recover galactic parameters.
+\chapter{Methods}
+\section{Bayesian Methods}
+Unlike, the other full spectral fitting code currently available, I chose to explore Bayesian solutions to these problems instead of taking the common frequentest or maximum likelihood methods. The advantages of using Bayesian inference over frequentest and maximum likelihood methods are biased on how Bayesian inference interpret the data. Bayesian inference treats the data as fixed and the parameters as variable, while frequentest does the opposite. With out this treatment of parameters, the uncertainties of the parameters cannot be accurately assessed. Bayesian inference also allows the correct use of the uncertainties from the data, which yields a more realistic prediction of what the uncertainties of the parameters should be. Bayesian inference also built in ways to mitigate over-fitting without the use of arbitrary regularization.
 
-\subsection{Gibbs Sampling}
+The following chapters will discus the spectral fitting libraries used and the Bayesian computation methods that can be used for the fitting.
+
 
 \subsection{Markov chain Monte Carlo}
 Markov chain Monte Carlo (MCMC) is a class of sampling algorithms that use Markov chains to explore the posterior space. To use MCMC for parameter selection, the Metropolis-Hastings
@@ -26,5 +37,12 @@ can be used to fit to data while trying different models.
 
 \subsection{Hierarchical Models}
 
+\section{Spectral Fitting Tools}
+A spectral fitting code needs to select a SSP spectra and compare it to the input spectrum. The following section will describe the different ingredients of the spectral fitting libraries.
 
+At the heart of the code is efficiently searching for the correct SSP spectra based on its age and metallicity. To find the spectra with the correct age, I implemented a binary search algorithms \citep{press1992}. Binary search works by arranging each parameter in numeric order. The program selects a value from arranged parameters in the middle of the range and compares it to the value that wants to be found. If the value is greater than the being searched for, the program deletes all the greater vales, else it will delete the lesser values. This is repeated until the value is found. That is why this algorithm is also known as the divide and conquer search. 
+
+Once the correct SSP is found, the program needs to match the wavelength range and resolution with the input spectrum. The mapping of the wavelength range usually requires truncating the wavelength range of the SSP spectra. Matching the wavelength by re-binning the flux axis so the total flux is conserved. This is done with a helper libraries Pysynphot\footnote{\url{https://github.com/spacetelescope/pysynphot}}.
+
+\bibliography{meth_bib}
 \end{document}
